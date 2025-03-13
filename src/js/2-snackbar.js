@@ -26,17 +26,31 @@ function onSubmitBtnClick(event) {
   const delay = Number(form.elements.delay.value);
   const radioChecked = form.elements.state.value;
 
+  if (delay <= 0) {
+    iziToast.warning({
+      title: 'Caution',
+      message: '⚠️ Delay must be greater than 0 ms',
+      position: 'topRight',
+      color: '#FFA000',
+    });
+    return;
+  }
+
   delayPromise(delay, radioChecked)
     .then(({ delay }) => {
       iziToast.success({
         title: 'OK',
         message: `✅ Fulfilled promise in ${delay} ms`,
+        position: 'topRight',
+        color: '#59a10d',
       });
     })
     .catch(({ delay }) => {
       iziToast.error({
         title: 'Error',
         message: `❌ Rejected promise in ${delay} ms`,
+        position: 'topRight',
+        color: '#FF0000',
       });
     });
 
