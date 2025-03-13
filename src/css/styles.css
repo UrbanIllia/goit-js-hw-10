@@ -1,3 +1,6 @@
+body {
+  background-color: #373739;
+}
 .list-btn {
   display: flex;
   flex-direction: column;
